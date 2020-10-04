@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  user-service-api:
+    image: "${USER_SERVICE_DEV_IMAGE}"
+    command: python -m wise_elders.user_service.main
+    ports:
+      - 8080:8080
+    environment:
+      LOGGING_LEVEL: DEBUG
+      MONGO_URL: 'mongodb://mongo:27017'
+      MONGO_DATABASE: 'users'
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
