@@ -20,3 +20,9 @@ test:
 	docker run \
 	-t $(USER_SERVICE_TEST_IMAGE) \
 	pytest
+
+build-wheel:
+	python3 setup.py sdist bdist_wheel
+
+publish-wheel:
+	twine upload dist/*
