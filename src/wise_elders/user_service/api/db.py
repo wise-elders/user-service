@@ -21,4 +21,3 @@ def db():
         assert mongo_database
         DATABASE = db_connection()[mongo_database]
     return DATABASE
-
